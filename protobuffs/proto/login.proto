@@ -1,0 +1,80 @@
+//=============================================================
+// @name login 10 登入 注册
+//=============================================================
+// 普通测试登陆
+// @name login
+message m_1001_tos {
+    required    string          openid         = 1; //玩家openid
+    required    string          name           = 2; //名字
+    required    string          icon           = 3; //头像
+    required    uint32           sex           = 4; //性别
+    required    string          country        = 5; //国家
+    required    string          province       = 6; //省份
+    required    string          city           = 7; //城市
+    required    uint32          parent_id      = 8; //邀请人id
+}
+message m_1001_toc {
+    required    p_role_info    info        = 1;
+    required    uint32         id          = 2; //验证id
+}
+
+// 微信授权
+// @name wx_login
+message m_1002_tos {
+    required    string          code           = 1; //微信授权code
+    required    string          name           = 2; //名字
+    required    string          icon           = 3; //头像
+    required    uint32           sex           = 4; //性别
+    required    string          country        = 5; //国家
+    required    string          province       = 6; //省份
+    required    string          city           = 7; //城市
+    required    uint32          parent_id      = 8; //邀请人id
+}
+message m_1002_toc {
+    required    p_role_info    info        = 1;
+    required    uint32         id          = 2; //验证id
+}
+
+
+// 验证码登陆(断线重连)
+// @name secret_login
+message m_1003_tos {
+    required    uint32         role_id          = 1; //role_id
+    required    uint32         id               = 2; //验证id
+}
+message m_1003_toc {
+    required    p_role_info    info        = 1;
+    required    uint32         id          = 2; //验证id
+}
+
+// 主页信息
+message p_role_info {
+    required    uint32         role_id         = 1; //人物id
+    required    string         nick_name       = 2; //名字
+    required    string         icon            = 3; //头像
+    required    uint32         gold            = 4; // 金币
+    required    uint32         diamond         = 5; // 钻石
+    required    string         openid          = 6; // 登陆的openid
+   }
+
+// 心跳包
+// @name heart 
+message m_1098_tos {
+}
+message m_1098_toc {
+}
+
+// 测试接口
+// @name test_interface
+message m_1097_tos {
+}
+message m_1097_toc {
+    required     string       msg      =1;//返回“你好”
+}
+
+
+// 错误提示协议
+// @name error_msg
+message m_1099_toc {
+    required    uint32    error_code        = 1;
+}

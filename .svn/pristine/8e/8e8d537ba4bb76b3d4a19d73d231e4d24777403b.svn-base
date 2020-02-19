@@ -1,0 +1,12 @@
+-define(error_busy, 1).           %% 系统繁忙，请稍后再试。
+-define(error_gold, 2).           %% 金币不足
+-define(error_act, 3).            %% 错误的操作
+-define(error_repeat_login, 4).   %% 重复登陆
+-define(error_role_data, 5).      %% 玩家数据异常
+-define(error_role_exit, 6).      %% 玩家数据不存在
+-define(error_item_use, 7).       %% 道具使用未冷却
+-define(error_screat, 8).         %% 登陆过期
+-define(error_login_other, 9).    %% 在其他地方登陆
+-define(error_item_repeat, 10).   %% 目前不能使用该道具
+-define(error_diamond, 11).       %% 钻石不足
+

@@ -1,0 +1,33 @@
+//=============================================================
+// @name role 11 人物
+//=============================================================
+
+// 资产推送
+// @name push_role_assets
+message m_1101_toc {
+    repeated    p_assets     list          = 1; // 资产改变列表
+
+}
+
+message p_assets{
+    required    e_item_type  type           = 1;//资产类型
+    required    uint32       num            = 2;//数量，id
+
+}
+
+//数据类型
+enum e_item_type{
+       gold = 1;            //  金币
+       diamond = 2;         //  钻石
+}
+
+
+
+// 前端错误日志
+// @name client_error_log
+message m_1197_tos {
+    required    string      msg       = 1;
+}
+message m_1197_toc {
+}
+

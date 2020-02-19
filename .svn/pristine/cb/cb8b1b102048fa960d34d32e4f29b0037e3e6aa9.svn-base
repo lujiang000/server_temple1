@@ -1,0 +1,36 @@
+//=============================================================
+// @name rank 12 排行信息
+//=============================================================
+
+// 查看排行
+// @name get_rank_info 
+message m_1201_tos {
+    required    uint32          type          = 1; // 1.财富，2物品，3盈利, 4击杀榜
+    required    uint32          start         = 2; // 从第几名开始
+    required    uint32          num           = 3; // 多少数量数据
+    required    uint32          up_or_down    = 4; // 向下翻还是上翻，0下，1上
+    required    uint32          date          = 5; // 0：当前排行榜，1：上期排行， 2：上上期。。。。。。
+
+}
+message m_1201_toc {
+    repeated    p_rank_info     list          = 2; // 排行信息
+    required    uint32          num           = 3; // 自己的排名 0未上榜
+    required    uint32          value         = 4; // 自己的值
+}
+
+message p_rank_info {
+    required    uint32          num         = 1; // 排行名次
+    required    uint32          id          = 2; // 唯一id
+    required    uint32          role_id     = 3; // 玩家id
+    required    string          name        = 4; // 名字
+    required    string          icon        = 5; // icon
+    required    uint32          vip         = 6; // vip
+    required    string          sign        = 7; // 个性签名
+    required    uint32          value1      = 8; // 排行第一个值
+    optional    uint32          value2      = 9; 
+    optional    uint32          value3      = 10; 
+    optional    uint32          value4      = 11; 
+    optional    uint32          value5      = 12; 
+}
+
+

@@ -1,0 +1,88 @@
+-- 注册用户
+-- 人物数据
+DROP TABLE IF EXISTS role;
+CREATE TABLE `role` (
+  `role_id` int(11) DEFAULT '0'  COMMENT '人物id',
+  `openid` varchar(50)  COMMENT '微信openid',
+  `name` varchar(50)  COMMENT '名字',
+  `icon` varchar(300)  COMMENT '头像',
+  `gold` int(11)  DEFAULT '0' COMMENT '金币',
+  `diamond` int(11)  DEFAULT '0' COMMENT '钻石',
+  `login_time` int(11)  DEFAULT '0' COMMENT '最后一次登陆的时间戳',
+  `off_time` int(11)  DEFAULT '0' COMMENT '最后一次下线的时间戳',
+  `register_time` int(11)  DEFAULT '0' COMMENT '注册时间',
+  `off` int(11)  DEFAULT '0' COMMENT '是否下线，0否，1是',
+  `info` text  COMMENT '玩家所有信息',
+  PRIMARY KEY (`role_id`),
+  KEY `openid` (`openid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
+
+
+-- 金币获得和消费日志
+DROP TABLE IF EXISTS gold_cost_log;
+CREATE TABLE `gold_cost_log` (
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+    `role_id` int(11) DEFAULT '0'  COMMENT '人物id',
+    `type` int(11) DEFAULT '0'  COMMENT '操作类型',
+    `value_befor` int(11) DEFAULT '0'  COMMENT '操作前的值',
+    `cost_value` int(11) DEFAULT '0'  COMMENT '操作消费的值',
+    `add_value` int(11) DEFAULT '0'  COMMENT '操作获得的值',
+    `value_after` int(11) DEFAULT '0'  COMMENT '操作后的值',
+    `time` int(11) DEFAULT '0'  COMMENT '时间',
+    PRIMARY KEY (`id`),
+    KEY `role_id` (`role_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
+
+-- 钻石获得和消费日志
+DROP TABLE IF EXISTS diamond_cost_log;
+CREATE TABLE `diamond_cost_log` (
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+    `role_id` int(11) DEFAULT '0'  COMMENT '人物id',
+    `type` int(11) DEFAULT '0'  COMMENT '操作类型',
+    `value_befor` int(11) DEFAULT '0'  COMMENT '操作前的值',
+    `cost_value` int(11) DEFAULT '0'  COMMENT '操作消费的值',
+    `add_value` int(11) DEFAULT '0'  COMMENT '操作获得的值',
+    `value_after` int(11) DEFAULT '0'  COMMENT '操作后的值',
+    `time` int(11) DEFAULT '0'  COMMENT '时间',
+    PRIMARY KEY (`id`),
+    KEY `role_id` (`role_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
+
+
+-- 玩家注册留存日志
+DROP TABLE IF EXISTS role_account_log;
+CREATE TABLE `role_account_log` (
+    `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+    `channel` int(11) DEFAULT '0'  COMMENT '渠道商',
+    `registe` int(11) DEFAULT '0'  COMMENT '注册人数',
+    `login` int(11) DEFAULT '0'  COMMENT '登陆人数',
+    `next_day` int(11) DEFAULT '0'  COMMENT '次日留存',
+    `seven_day` int(11) DEFAULT '0'  COMMENT '7日留存',
+    `fifteen_day` int(11) DEFAULT '0'  COMMENT '15日留存',
+    `time` int(11) DEFAULT '0'  COMMENT '时间',
+    PRIMARY KEY (`id`),
+    KEY `time` (`time`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
+
+-- 前端错误日志
+DROP TABLE IF EXISTS client_error_log;
+CREATE TABLE `client_error_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `role_id` int(11) NOT NULL COMMENT '人物id',
+  `name` varchar(50)  COMMENT '名字',
+  `msg` text COMMENT '错误日志',
+  `time` int(11) NOT NULL COMMENT '时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
+
+-- 在线人数统计
+DROP TABLE IF EXISTS role_online_log;
+CREATE TABLE `role_online_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `num` int(11) NOT NULL COMMENT '在线人数',
+  `time` int(11) NOT NULL COMMENT '时间',
+  PRIMARY KEY (`id`),
+  KEY `time` (`time`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
+
+
